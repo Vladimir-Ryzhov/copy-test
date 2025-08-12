@@ -1,0 +1,33 @@
+---
+import Favicons from "../components/Favicons.astro";
+
+interface MainHeadProps {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props as MainHeadProps;
+
+const siteName = "Protectino 4KIDS";
+const tagline = "Sicherheit für Kinder von Anfang an";
+
+const pageTitle = title
+  ? `${title} | ${siteName} – ${tagline}`
+  : `${siteName} – ${tagline}`;
+
+const pageDesc =
+  description ??
+  "Protectino4KIDS – Schutzengel für Kinder: Individuelle Vorsorge und Absicherungskonzepte für eine sichere, sorgenfreie Zukunft – heute und ein Leben lang.";
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDesc} />
+
+  <Favicons />
+
+  <link rel="manifest" href="/assets/images/favicons/manifest.json" />
+</head>
