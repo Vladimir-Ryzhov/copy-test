@@ -1,0 +1,26 @@
+---
+const links = [
+  { url: "/index.html", title: "Home" },
+  { url: "/wer_wir_sind.html", title: "Wer wir sind" },
+  { url: "/warum_protectino.html", title: "Warum Protectino?" },
+  { url: "/leistungen.html", title: "Leistungen" },
+  { url: "/pakete.html", title: "Pakete" },
+];
+---
+
+<ul>
+  {
+    links.map((link) => (
+      <li>
+        <a href={link.url}>{link.title}</a>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  a {
+    font-family: $font-primary;
+    color: #111032;
+  }
+</style>

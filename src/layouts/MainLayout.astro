@@ -1,8 +1,10 @@
 ---
 import MainHead from "./MainHead.astro";
+import Header from "../components/Header.astro";
 
 import "../styles/globals.scss";
 import "../styles/fonts.scss";
+import TopBar from "../components/TopBar.astro";
 
 interface MainLayoutProps {
   title: string;
@@ -13,6 +15,7 @@ const { title, description } = Astro.props as MainLayoutProps;
 ---
 
 <html lang="de-DE">
+  <TopBar />
   <MainHead {title} {description} />
   <body>
     <slot />

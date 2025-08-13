@@ -1,0 +1,32 @@
+<div class="container">
+  <slot />
+</div>
+
+<style lang="scss">
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media-up-sm {
+      max-width: 550px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    @include media-up-md {
+      max-width: 720px;
+    }
+
+    @include media-up-lg {
+      max-width: 990px;
+
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    @include media-up-xl {
+      max-width: 1290px;
+    }
+  }
+</style>
