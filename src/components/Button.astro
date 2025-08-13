@@ -1,0 +1,56 @@
+<a href="/kontakt.html" class="animated">Lass und reden</a>
+
+<style lang="scss">
+  a {
+    display: flex;
+    align-items: center;
+    padding: 13px 29px;
+    min-height: 55px;
+    border-radius: 15px;
+
+    font-family: $font-primary;
+    font-weight: 600;
+
+    background-color: $color-blue;
+    color: $color-white;
+  }
+
+  .animated {
+    position: relative;
+    z-index: 1;
+    transition: 800ms;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      -webkit-transition-duration: 800ms;
+      transition-duration: 800ms;
+      width: 200%;
+      height: 200%;
+      top: 110%;
+      left: 50%;
+      background: #f2f2f2;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -o-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    &:hover {
+      background: #f2f2f2;
+      color: $color-primary;
+    }
+
+    &:hover::before {
+      top: -40%;
+    }
+  }
+</style>

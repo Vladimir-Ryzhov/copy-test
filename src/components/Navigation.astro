@@ -1,26 +1,45 @@
 ---
 const links = [
-  { url: "/index.html", title: "Home" },
+  { url: "/", title: "Home" },
   { url: "/wer_wir_sind.html", title: "Wer wir sind" },
   { url: "/warum_protectino.html", title: "Warum Protectino?" },
   { url: "/leistungen.html", title: "Leistungen" },
   { url: "/pakete.html", title: "Pakete" },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<ul>
+<ul class="list">
   {
     links.map((link) => (
       <li>
-        <a href={link.url}>{link.title}</a>
+        <a href={link.url} class={currentPath === link.url ? "active" : ""}>
+          {link.title}
+        </a>
       </li>
     ))
   }
 </ul>
 
 <style lang="scss">
+  .list {
+    display: flex;
+    column-gap: 40px;
+  }
+
   a {
     font-family: $font-primary;
-    color: #111032;
+    color: $color-secondary;
+    font-weight: 600;
+    transition: $transition-duration $transition-timing-function color;
+
+    &:hover {
+      color: $color-hover;
+    }
+  }
+
+  .active {
+    color: $color-blue;
   }
 </style>

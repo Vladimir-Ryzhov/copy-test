@@ -1,0 +1,101 @@
+---
+import Container from "./Container.astro";
+import Navigation from "./Navigation.astro";
+import MenuLeft from "../icons/MenuLeft.astro";
+import Button from "./Button.astro";
+---
+
+<header class="container-wrapper">
+  <Container>
+    <div class="inner-wrapper">
+      <img src="/assets/icons/MainLogo.svg" alt="main logo" class="logo" />
+      <div class="middle">
+        <Navigation />
+      </div>
+
+      <div class="buttons-wrapper">
+        <div class="btn">
+          <Button />
+        </div>
+        <div class="burger-btn"><MenuLeft /></div>
+      </div>
+    </div>
+  </Container>
+</header>
+
+<div class="test"></div>
+
+<style lang="scss">
+  .test {
+    height: 3000px;
+  }
+
+  .inner-wrapper {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: $color-white;
+  }
+
+  .logo {
+    width: 130px;
+
+    @include media-up-sm {
+      width: 250px;
+    }
+  }
+
+  .middle {
+    display: none;
+
+    @include media-up-xl {
+      display: block;
+    }
+  }
+
+  .buttons-wrapper {
+    @include media-up-sm {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+    }
+
+    @include media-up-md {
+      column-gap: 20px;
+    }
+  }
+
+  .btn {
+    display: none;
+
+    @include media-up-sm {
+      display: block;
+    }
+  }
+
+  .burger-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    width: 55px;
+    padding: 15px;
+
+    background-color: #f2f2f2;
+    border-radius: 15px;
+
+    & svg {
+      height: 16px;
+      width: 20px;
+    }
+  }
+</style>
