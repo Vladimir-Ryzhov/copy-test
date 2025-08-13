@@ -1,0 +1,108 @@
+---
+import Container from "./Container.astro";
+import PhoneIcon from "../icons/PhoneIcon.astro";
+import EnvelopeIcon from "../icons/EnvelopeIcon.astro";
+---
+
+<div class="container-wrapper">
+  <Container>
+    <div class="wrapper">
+      <div class="left">
+        <a href="mailto:info@protectino4kids.de" class="link link-animated">
+          <span class="icon"><EnvelopeIcon /></span>
+          info@protectino4kids.de
+        </a>
+
+        <hr />
+
+        <a href="tel:041547946169" class="link link-animated">
+          <span class="icon">
+            <PhoneIcon />
+          </span>
+          04154 / 7946169
+        </a>
+      </div>
+      <div class="right">
+        <ul class="top-nav">
+          <li><a href="/kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style lang="scss">
+  .container-wrapper {
+    display: none;
+  }
+
+  @include media-up(992px) {
+    .container-wrapper {
+      display: block;
+      background-color: $color-blue;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      height: 48px;
+
+      font-family: $font-primary;
+      font-size: 14px;
+      color: $color-white;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+
+      height: 100%;
+    }
+
+    hr {
+      width: 1px;
+      height: 14px;
+      border: 0;
+      background-color: $color-white;
+    }
+
+    .icon {
+      display: inline-block;
+      height: 14px;
+      width: 14px;
+      fill: $color-white;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+      padding-bottom: 2px;
+
+      &-animated {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          left: 0;
+          bottom: 0;
+          display: block;
+          width: 100%;
+          height: 1px;
+          background: $color-white;
+
+          width: 0;
+          transition: 0.3s;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>
