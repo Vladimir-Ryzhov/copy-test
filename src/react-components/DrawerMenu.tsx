@@ -27,7 +27,7 @@ function TimesIcon() {
     <svg
       stroke="currentColor"
       fill="#fff"
-      stroke-width="0"
+      strokeWidth="0"
       width="27px"
       height="27px"
       viewBox="0 0 352 512"

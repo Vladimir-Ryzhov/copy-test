@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
         <div class="btn">
           <Button />
         </div>
-        <DrawerMenu currentPath={currentPath} client:load />
+        <DrawerMenu currentPath={currentPath} client:only="react" />
       </div>
     </div>
   </Container>
