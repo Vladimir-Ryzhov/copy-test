@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 
 import "../styles/globals.scss";
 import "../styles/fonts.scss";
+import Loader from "../components/Loader.astro";
 
 interface MainLayoutProps {
   title: string;
@@ -15,9 +16,11 @@ const { title, description } = Astro.props as MainLayoutProps;
 ---
 
 <html lang="de-DE">
-  <TopBar />
   <MainHead {title} {description} />
   <body>
+    <Loader />
+
+    <TopBar />
     <Header />
     <slot />
   </body>

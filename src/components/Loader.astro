@@ -1,0 +1,120 @@
+<div id="app-loader" class="app-loader" aria-live="polite">
+  <div class="spinner" aria-label="Loading…"></div>
+</div>
+
+<style is:global lang="scss">
+  .app-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    opacity: 1;
+    transition: opacity 0.7s ease;
+  }
+  .app-loader.is-done {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: $color-blue;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Прячем лоадер плавно (opacity), а затем убираем из потока (hidden)
+  function hideLoader() {
+    const el = document.getElementById("app-loader");
+    if (!el || el.hidden || el.classList.contains("is-done")) return;
+    el.classList.add("is-done");
+    el.addEventListener(
+      "transitionend",
+      () => {
+        el.hidden = true;
+      },
+      { once: true }
+    );
+  }
+
+  // Ждём, пока у всех astro-island пропадёт атрибут "ssr"
+  function onAllIslandsHydrated(
+    cb: () => void, // колбэк без аргументов
+    { includeLazy = false }: { includeLazy?: boolean } = {}
+  ) {
+    const islands: Element[] = Array.from(
+      document.querySelectorAll("astro-island")
+    );
+    if (islands.length === 0) {
+      cb();
+      return;
+    }
+
+    let remaining = 0;
+
+    const watch = (el: Element) => {
+      if (!el.hasAttribute("ssr")) return;
+      remaining++;
+      const mo = new MutationObserver(() => {
+        if (!el.hasAttribute("ssr")) {
+          mo.disconnect();
+          remaining--;
+          if (remaining === 0) cb();
+        }
+      });
+      mo.observe(el, { attributes: true, attributeFilter: ["ssr"] });
+    };
+
+    for (const el of islands) {
+      if (!includeLazy) {
+        const directive = el.getAttribute("client") || "";
+        if (/^(visible|media|idle)/.test(directive)) continue;
+      }
+      watch(el);
+    }
+
+    if (remaining === 0) cb();
+  }
+
+  function wireUp() {
+    let done = false;
+    const finish = () => {
+      if (!done) {
+        done = true;
+        hideLoader();
+        document.dispatchEvent(new CustomEvent("all-islands-hydrated"));
+      }
+    };
+
+    onAllIslandsHydrated(finish, { includeLazy: false }); // поменяй на true, если нужно ждать ленивые
+
+    // Фолбэк: чтобы лоадер не завис, если какой-то остров так и не гидрируется
+    setTimeout(finish, 8000);
+  }
+
+  // Первый заход (полная загрузка)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", wireUp, { once: true });
+  } else {
+    wireUp();
+  }
+
+  // Навигации через Astro View Transitions
+  document.addEventListener("astro:page-load", wireUp);
+</script>
