@@ -1,7 +1,7 @@
 @use "variables" as *;
 
 @mixin media-up($breakpoint) {
-  @media (min-width: $breakpoint) {
+  @media screen and (min-width: $breakpoint) {
     @content;
   }
 }

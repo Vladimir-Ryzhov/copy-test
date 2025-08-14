@@ -1,8 +1,10 @@
 ---
 import Container from "./Container.astro";
 import Navigation from "./Navigation.astro";
-import MenuLeft from "../icons/MenuLeft.astro";
 import Button from "./Button.astro";
+import { DrawerMenu } from "../react-components/DrawerMenu.tsx";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="container-wrapper">
@@ -17,7 +19,7 @@ import Button from "./Button.astro";
         <div class="btn">
           <Button />
         </div>
-        <div class="burger-btn"><MenuLeft /></div>
+        <DrawerMenu currentPath={currentPath} client:load />
       </div>
     </div>
   </Container>
@@ -79,23 +81,6 @@ import Button from "./Button.astro";
 
     @include media-up-sm {
       display: block;
-    }
-  }
-
-  .burger-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 55px;
-    width: 55px;
-    padding: 15px;
-
-    background-color: #f2f2f2;
-    border-radius: 15px;
-
-    & svg {
-      height: 16px;
-      width: 20px;
     }
   }
 </style>

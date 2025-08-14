@@ -1,0 +1,94 @@
+import { useEffect, useState } from "react";
+import styles from "./DrawerMenu.module.scss";
+
+import Drawer from "react-modern-drawer";
+
+import "react-modern-drawer/dist/index.css";
+import { DrawerMenuContent } from "./DrawerMenuContent/DrawerMenuContent";
+
+function MenuLeftIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="16"
+      viewBox="0 0 20 16"
+      fill="none"
+    >
+      <rect y="14" width="10" height="2" fill="#1C2539"></rect>
+      <rect y="7" width="20" height="2" fill="#1C2539"></rect>
+      <rect width="10" height="2" fill="#1C2539"></rect>
+    </svg>
+  );
+}
+
+function TimesIcon() {
+  return (
+    <svg
+      stroke="currentColor"
+      fill="#fff"
+      stroke-width="0"
+      width="27px"
+      height="27px"
+      viewBox="0 0 352 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+    </svg>
+  );
+}
+
+export function useLockBodyScroll(lock: boolean) {
+  useEffect(() => {
+    if (!lock) return;
+
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
+    };
+  }, [lock]);
+}
+
+interface DrawerMenuProps {
+  currentPath: string;
+}
+
+export function DrawerMenu({ currentPath }: DrawerMenuProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
+  useLockBodyScroll(isOpen);
+
+  return (
+    <>
+      <div className={styles["burger-btn"]} onClick={toggleDrawer}>
+        <MenuLeftIcon />
+      </div>
+      <Drawer
+        open={isOpen}
+        onClose={toggleDrawer}
+        direction="right"
+        className={styles.drawer}
+        size=""
+      >
+        <div>
+          <button className={styles["close-btn"]} onClick={toggleDrawer}>
+            <TimesIcon />
+          </button>
+
+          <DrawerMenuContent currentPath={currentPath} />
+        </div>
+      </Drawer>
+    </>
+  );
+}

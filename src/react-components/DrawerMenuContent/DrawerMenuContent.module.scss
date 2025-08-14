@@ -1,0 +1,90 @@
+.inner-wrapper {
+  padding: 50px 30px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  color: $color-body;
+
+  @include media-up-xl {
+    display: none;
+  }
+}
+
+.link {
+  line-height: 26px;
+  font-size: 15px;
+
+  transition: $transition-duration $transition-timing-function color;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &.active {
+    color: $color-blue;
+  }
+}
+
+.title {
+  display: none;
+
+  @include media-up-xl {
+    display: inline-block;
+    margin-top: 30px;
+
+    color: $color-blue;
+    font-family: $font-secondary;
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+.description {
+  display: none;
+
+  @include media-up-xl {
+    display: inline-block;
+    margin-top: 30px;
+
+    color: $color-body;
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+.list-links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  & li {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    & svg {
+      transition: fill $transition-duration $transition-timing-function;
+    }
+
+    & a {
+      color: $color-heading;
+      transition: color $transition-duration $transition-timing-function;
+    }
+
+    &:hover a {
+      color: $color-blue;
+    }
+
+    &:hover svg {
+      fill: $color-blue;
+    }
+  }
+}

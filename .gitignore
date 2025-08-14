@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # VS Code editor settings
 .vscode/
+
+# Local notes
+dev-notes.txt
