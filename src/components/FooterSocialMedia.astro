@@ -1,0 +1,60 @@
+---
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+---
+
+<ul class="list">
+  <li>
+    <a
+      href="https://www.facebook.com/people/Marko-Meyer-Denis-Sch%C3%A4del-GbR/100088167489681/"
+      class="link"
+    >
+      <FaFacebookF />
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://instagram.com/markomeyer74?igshid=ZDdkNTZiNTM"
+      class="link"
+    >
+      <FaInstagram />
+    </a>
+  </li>
+
+  <li>
+    <a href="#" class="link">
+      <FaLinkedinIn />
+    </a>
+  </li>
+</ul>
+
+<style lang="scss">
+  .list {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+
+    background-color: $color-blue;
+
+    transition: transform $transition-duration $transition-timing-function;
+
+    & svg {
+      fill: $color-white;
+      transform: scale(1.1);
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+</style>

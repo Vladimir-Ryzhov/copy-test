@@ -1,0 +1,79 @@
+---
+import Container from "./Container.astro";
+import FooterSocialMedia from "./FooterSocialMedia.astro";
+import FooterLists from "./FooterLists.astro";
+---
+
+<footer>
+  <Container>
+    <div class="wrapper">
+      <div class="left">
+        <img src="/assets/icons/LogoWhite.svg" alt="main logo" class="logo" />
+        <p class="description">
+          Sicherheit, Vorsorge &amp; Schutz für Dein Kind – ein Leben lang. Wir
+          sind Dein zuverlässiger Partner für maßgeschneiderte
+          Absicherungslösungen – weil Dein Kind das Beste verdient!
+        </p>
+
+        <h4 class="social-title">Folge uns für Tipps & Neuigkeiten:</h4>
+        <FooterSocialMedia />
+      </div>
+
+      <div class="right">
+        <FooterLists />
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<style lang="scss">
+  footer {
+    padding-top: 65px;
+    padding-bottom: 65px;
+
+    background-color: $color-heading-dark;
+
+    color: #8b8f99;
+    font-size: 15px;
+    line-height: 28px;
+  }
+
+  .wrapper {
+    @include media-up-lg {
+      display: grid;
+      grid-template-columns: 220px 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-column-gap: 50px;
+    }
+
+    @include media-up-xl {
+      grid-template-columns: 300px 1fr 1fr 1fr;
+      grid-column-gap: 110px;
+    }
+  }
+
+  .left {
+    @include media-up-lg {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+
+  .right {
+    @include media-up-lg {
+      grid-area: 1 / 2 / 2 / 5;
+    }
+  }
+
+  .description {
+    margin-top: 25px;
+  }
+
+  .social-title {
+    display: inline-block;
+    margin-top: 25px;
+
+    @include media-up-lg {
+      margin-bottom: 10px;
+    }
+  }
+</style>

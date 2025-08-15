@@ -1,0 +1,233 @@
+---
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
+
+const menuLinks = [
+  { title: "Home", href: "/" },
+  { title: "Wer wir sind", href: "/wer-wir-sind" },
+  { title: "Warum Protectino?", href: "/warum-protectino" },
+  { title: "Leistungen", href: "/leistungen" },
+  { title: "Pakete", href: "/pakete" },
+  { title: "Kontakt", href: "/kontakt" },
+];
+
+const legalLinks = [
+  { title: "Datenschutz", href: "/datenschutz" },
+  { title: "Cookies", href: "/cookies" },
+  { title: "AGB", href: "/agb" },
+  { title: "Impressum", href: "/impressum" },
+];
+---
+
+<div class="wrapper">
+  <div class="section">
+    <h3 class="title">Menü</h3>
+    <ul>
+      {
+        menuLinks.map((link) => (
+          <li class="link-wrapper">
+            <a href={link.href} class="link-page">
+              <MdKeyboardArrowRight />
+              <span class="animated">{link.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3 class="title">Rechtliches</h3>
+    <ul>
+      {
+        legalLinks.map((link) => (
+          <li class="link-wrapper">
+            <a href={link.href} class="link-page">
+              <MdKeyboardArrowRight />
+              <span class="animated">{link.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3 class="title">Adresse</h3>
+    <ul class="address-list">
+      <li>
+        <span class="icon">
+          <FaPhone />
+        </span>
+        <div>
+          <h5 class="title">Kostenlose Beratung:</h5>
+          <a href="tel:041547946169">04154 / 7946169</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="icon">
+          <FaEnvelope />
+        </span>
+        <div>
+          <h5 class="title">E-Mail:</h5>
+          <a href="mailto:info@protectino4kids.de">info@protectino4kids.de</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="icon">
+          <FaLocationDot />
+        </span>
+        <div>
+          <h5 class="title">Adresse:</h5>
+          <a href="adress:Poststr.39"> Poststr. 39 22946 Trittau</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    margin-top: 25px;
+
+    @include media-up-md {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 10px;
+    }
+
+    @include media-up-lg {
+      margin-top: 15px;
+    }
+  }
+
+  h3.title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 70%;
+      bottom: 0;
+
+      height: 2px;
+      width: 7px;
+
+      background-color: $color-heading-dark;
+      z-index: 6;
+    }
+    &::after {
+      content: "";
+      position: relative;
+      display: block;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 2px;
+
+      background-color: $color-white;
+      z-index: 5;
+    }
+  }
+
+  li {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .address-list {
+    & li {
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+    }
+
+    & .title {
+      color: $color-white;
+      font-family: $font-primary;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    & .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 35px;
+      border-radius: 5px;
+
+      background-color: $color-blue;
+
+      & svg {
+        fill: $color-white;
+      }
+    }
+
+    & a {
+      transition: color $transition-duration $transition-timing-function;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+  }
+
+  .link-wrapper {
+    & .link-page {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+
+      transition: color $transition-duration $transition-timing-function;
+
+      &:hover {
+        color: $color-white;
+      }
+
+      & svg {
+        transition: transform $transition-duration $transition-timing-function;
+      }
+
+      &:hover svg {
+        transform: translateX(3px);
+      }
+
+      & .animated {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          left: 0;
+          bottom: 0;
+          display: block;
+          width: 100%;
+          height: 1px;
+          background: $color-blue;
+
+          width: 0;
+          transition: 0.3s;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>
