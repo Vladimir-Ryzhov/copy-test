@@ -1,0 +1,68 @@
+---
+import Container from "./Container.astro";
+
+const year = new Date().getFullYear();
+---
+
+<div class="wrapper">
+  <Container>
+    <div class="content">
+      <p>{year} © Protectino – Schutzengel4Kids</p>
+
+      <div class="rules-wrapper">
+        <p>Alle Rechte vorbehalten</p>
+        &nbsp;
+        <p>
+          Developed by <a
+            href="https://se-conzept.de/"
+            target="_blank"
+            class="animated">SE-Conzept</a
+          >
+        </p>
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    background-color: $color-blue;
+
+    color: $color-white;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 88px;
+  }
+
+  .rules-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .animated {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: $color-white;
+
+      width: 0;
+      transition: 0.3s;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
+</style>
