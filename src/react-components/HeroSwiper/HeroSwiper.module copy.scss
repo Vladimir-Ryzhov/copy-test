@@ -1,0 +1,59 @@
+.slider-wrapper {
+  overflow: hidden;
+}
+
+.slide {
+  height: 600px;
+  background-position: 78%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text {
+  padding-top: 120px;
+
+  & .subtitle {
+    font-family: $font-primary;
+
+    color: $color-blue;
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  & .title {
+    font-family: $font-secondary;
+    margin-top: 20px;
+
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  & .description {
+    margin-top: 20px;
+
+    color: $color-white;
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+.slide {
+  position: relative;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .slideInner {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+  }
+
+  .text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 10;
+  }
+}

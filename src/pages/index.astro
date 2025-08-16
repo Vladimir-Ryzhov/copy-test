@@ -1,9 +1,16 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <MainLayout title="Home">
-  <h1>Astro</h1>
+  <Hero />
 
-  <a href="/about">about</a>
+  <div class="temp"></div>
 </MainLayout>
+
+<style lang="scss">
+  .temp {
+    height: 400px;
+  }
+</style>

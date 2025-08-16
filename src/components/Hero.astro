@@ -1,0 +1,38 @@
+---
+import HeroSwiper from "../react-components/HeroSwiper/HeroSwiper.tsx";
+---
+
+<section>
+  <HeroSwiper client:only="react" />
+</section>
+
+<style lang="scss">
+  section {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-image: url(./assets/images/home/section-notch-top.png);
+      background-repeat: repeat-x;
+      display: block;
+      top: 0px;
+      width: 100%;
+      height: 20px;
+      z-index: 5;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-image: url(./assets/images/home/section-notch-top.png);
+      bottom: 0px;
+      height: 20px;
+      z-index: 5;
+
+      transform: rotate(180deg);
+    }
+  }
+</style>

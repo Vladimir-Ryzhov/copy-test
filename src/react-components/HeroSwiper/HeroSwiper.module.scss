@@ -1,0 +1,152 @@
+.slide {
+  position: relative;
+  height: 600px;
+  background-size: cover;
+  background-position: 78%;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  user-select: none;
+
+  @include media-up-xl {
+    height: 740px;
+  }
+}
+
+.subtitle {
+  font-family: $font-primary;
+
+  color: $color-blue;
+  font-size: 24px;
+  line-height: 36px;
+
+  max-width: 700px;
+
+  @include media-up-lg {
+    font-size: 28px;
+  }
+}
+
+.title {
+  font-family: $font-secondary;
+  margin-top: 20px;
+
+  color: $color-white;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+
+  max-width: 620px;
+
+  & span {
+    font-family: $font-secondary;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: 700;
+  }
+
+  @include media-up-sm {
+    font-size: 55px;
+    line-height: 62px;
+  }
+
+  @include media-up-md {
+    font-size: 60px;
+    line-height: 70px;
+  }
+
+  @include media-up-xl {
+    font-size: 72px;
+    line-height: 72px;
+  }
+}
+
+.slideInner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.description {
+  margin-top: 20px;
+
+  color: $color-white;
+  font-size: 18px;
+  line-height: 30px;
+
+  max-width: 700px;
+}
+
+.aprikot {
+  color: $color-aprikot;
+}
+
+.accent {
+  color: $color-blue;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media-up-sm {
+    max-width: 550px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include media-up-md {
+    max-width: 720px;
+  }
+
+  @include media-up-lg {
+    max-width: 990px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  @include media-up-xl {
+    max-width: 1290px;
+  }
+}
+
+.buttons {
+  display: none;
+
+  @include media-up-md {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: space-between;
+
+    z-index: 5;
+    transform: translateY(-50%);
+  }
+
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background-color: $color-blue;
+
+    cursor: pointer;
+    & svg {
+      fill: $color-white;
+    }
+  }
+
+  & .nextBtn {
+    transform: rotate(180deg);
+  }
+}

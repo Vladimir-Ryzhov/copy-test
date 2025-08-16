@@ -23,6 +23,9 @@ importers:
       astro:
         specifier: ^5.12.9
         version: 5.12.9(@types/node@24.2.1)(rollup@4.46.2)(sass@1.90.0)(typescript@5.9.2)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -35,6 +38,9 @@ importers:
       react-modern-drawer:
         specifier: ^1.4.0
         version: 1.4.0(react@19.1.1)
+      swiper:
+        specifier: ^11.2.10
+        version: 11.2.10
     devDependencies:
       autoprefixer:
         specifier: ^10.4.21
@@ -1553,6 +1559,10 @@ packages:
   strip-ansi@7.1.0:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
+
+  swiper@11.2.10:
+    resolution: {integrity: sha512-RMeVUUjTQH+6N3ckimK93oxz6Sn5la4aDlgPzB+rBrG/smPdCTicXyhxa+woIpopz+jewEloiEE3lKo1h9w2YQ==}
+    engines: {node: '>= 4.7.0'}
 
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
@@ -3652,6 +3662,8 @@ snapshots:
   strip-ansi@7.1.0:
     dependencies:
       ansi-regex: 6.1.0
+
+  swiper@11.2.10: {}
 
   tiny-inflate@1.0.3: {}
 
