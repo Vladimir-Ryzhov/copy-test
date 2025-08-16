@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCreative, Navigation, Parallax } from "swiper/modules";
+import { Autoplay, EffectCreative, Navigation, Parallax } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -92,7 +92,7 @@ export default function HeroSwiper() {
   return (
     <Swiper
       parallax={true}
-      modules={[EffectCreative, Parallax, Navigation]}
+      modules={[EffectCreative, Parallax, Navigation, Autoplay]}
       effect={"creative"}
       creativeEffect={{
         prev: {
@@ -113,17 +113,9 @@ export default function HeroSwiper() {
           navigation.nextEl = nextRef.current;
         }
       }}
-      breakpoints={{
-        768: {
-          navigation: {
-            enabled: true,
-          },
-        },
-        0: {
-          navigation: {
-            enabled: false,
-          },
-        },
+      autoplay={{
+        delay: 8000,
+        disableOnInteraction: false,
       }}
       loop
       speed={800}
@@ -134,7 +126,7 @@ export default function HeroSwiper() {
           <div
             className={styles.slide}
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(${slide.image})`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${slide.image})`,
             }}
           >
             <div className={clsx(styles.slideInner, styles.container)}>
