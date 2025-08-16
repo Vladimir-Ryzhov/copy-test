@@ -113,31 +113,14 @@
   }
 }
 
-.buttons {
+.prevBtn,
+.nextBtn {
   display: none;
 
   @include media-up-md {
     position: absolute;
     top: 50%;
-    left: 10px;
-    right: 10px;
-    display: flex;
-    justify-content: space-between;
 
-    z-index: 5;
-    transform: translateY(-50%);
-  }
-
-  @include media-up-lg {
-    left: 20px;
-    right: 20px;
-  }
-  @include media-up-lg {
-    left: 30px;
-    right: 30px;
-  }
-
-  & button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,13 +132,37 @@
 
     background-color: $color-blue;
 
+    z-index: 5;
+    transform: translateY(-50%);
+
     cursor: pointer;
     & svg {
       fill: $color-white;
     }
   }
+}
 
-  & .nextBtn {
-    transform: rotate(180deg);
+.prevBtn {
+  @include media-up-md {
+    left: 10px;
+  }
+  @include media-up-lg {
+    left: 20px;
+  }
+  @include media-up-lg {
+    left: 30px;
+  }
+}
+.nextBtn {
+  transform: rotate(180deg);
+
+  @include media-up-md {
+    right: 10px;
+  }
+  @include media-up-lg {
+    right: 20px;
+  }
+  @include media-up-lg {
+    right: 30px;
   }
 }

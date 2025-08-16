@@ -144,14 +144,12 @@ export default function HeroSwiper() {
         </SwiperSlide>
       ))}
 
-      <div className={styles.buttons}>
-        <button ref={prevRef} className={styles.prevBtn}>
-          <IoIosArrowBack size={25} />
-        </button>
-        <button ref={nextRef} className={styles.nextBtn}>
-          <IoIosArrowBack size={25} />
-        </button>
-      </div>
+      <button ref={prevRef} className={styles.prevBtn}>
+        <IoIosArrowBack size={25} />
+      </button>
+      <button ref={nextRef} className={styles.nextBtn}>
+        <IoIosArrowBack size={25} />
+      </button>
     </Swiper>
   );
 }
