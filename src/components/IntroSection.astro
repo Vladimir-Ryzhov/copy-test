@@ -1,0 +1,160 @@
+---
+import Container from "./Container.astro";
+import Button from "./Button.astro";
+import { FaCheck } from "react-icons/fa";
+---
+
+<section>
+  <Container>
+    <div class="content">
+      <img
+        class="img"
+        src="/assets/images/home/protectino_home_circle_1.jpg"
+        alt="Glückliches Baby beim Spielen auf dem Boden"
+      />
+
+      <div class="content-right">
+        <h2 class="title">
+          Jedes Kind verdient einen <span class="aprikot-text-color"
+            >Schutz</span
+          ><span class="accent-text-color">engel,</span>
+        </h2>
+
+        <p class="description">
+          der es auf seinem Lebensweg begleitet - genau dafür steht <strong
+            class="accent-text-color"
+            >Protectino!
+          </strong>
+          Unser
+          <strong class="accent-text-color"
+            >süßer Löwe mit Engelsflügeln
+          </strong>
+          symbolisiert Sicherheit, Geborgenheit und eine sorgenfreie Zukunft für
+          Dein Kind.
+        </p>
+
+        <p class="description">
+          Wir wissen, dass Eltern sich vor allem eines wünschen:
+          <strong class="accent-text-color">
+            den besten Schutz für ihr Kind - heute, morgen und ein Leben lang.
+          </strong> Deshalb bieten wir <strong class="accent-text-color"
+            >maßgeschneiderte Absicherungskonzepte,
+          </strong> die genau zu Dir und Deiner Familie passen.
+        </p>
+
+        <ul class="advantages">
+          <li>
+            <FaCheck size={15} />
+            <p>Frühzeitig vorsorgen - ein Leben lang profitieren</p>
+          </li>
+          <li>
+            <FaCheck size={15} />
+            <p>Individuelle Absicherung für jedes Kind</p>
+          </li>
+          <li>
+            <FaCheck size={15} />
+            <p>Schutz & finanzielle Sicherheit aus einer Hand</p>
+          </li>
+        </ul>
+
+        <p class="description">
+          Lass uns gemeinsam den besten Schutz für Dein Kind finden!
+        </p>
+
+        <Button href="leistungen.html" text="Jetzt mehr erfahren" />
+        <Button href="kontakt.html" text="Unverblindlich beraten lassen" />
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  section {
+    padding-top: 100px;
+    padding-bottom: 60px;
+
+    @include media-up-md {
+      padding-bottom: 80px;
+    }
+    @include media-up-lg {
+      padding-bottom: 120px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+
+    @include media-up-lg {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 80px;
+    }
+  }
+
+  .content-right {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 15px;
+
+    @include media-up-lg {
+      row-gap: 20px;
+    }
+  }
+
+  .img {
+    border-radius: 50%;
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 35px;
+    color: $color-heading;
+
+    @include media-up-sm {
+      font-size: 32px;
+      line-height: 42px;
+    }
+    @include media-up-xl {
+      font-size: 48px;
+      line-height: 64px;
+    }
+
+    & span {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .description {
+    color: $color-body;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  .advantages {
+    & li {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    & li p {
+      color: $color-aprikot;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 28px;
+    }
+
+    & li svg {
+      fill: $color-blue;
+      flex-shrink: 0;
+    }
+  }
+</style>

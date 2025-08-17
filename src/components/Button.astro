@@ -1,10 +1,22 @@
-<a href="/kontakt.html" class="animated">Lass und reden</a>
+---
+interface ButtonProps {
+  href: string;
+  text: string;
+}
+
+const { href = "#", text = "Klick mich" } = Astro.props as ButtonProps;
+---
+
+<a href={href} class="animated">
+  {text}
+</a>
 
 <style lang="scss">
   a {
     display: flex;
     align-items: center;
     padding: 13px 29px;
+    width: max-content;
     min-height: 55px;
     border-radius: 15px;
 
