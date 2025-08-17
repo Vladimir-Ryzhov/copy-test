@@ -7,7 +7,7 @@ import { DrawerMenu } from "../react-components/DrawerMenu.tsx";
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="container-wrapper">
+<header id="site-header" class="container-wrapper">
   <Container>
     <div class="inner-wrapper">
       <img src="/assets/icons/MainLogo.svg" alt="main logo" class="logo" />
@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="buttons-wrapper">
         <div class="btn">
-          <Button />
+          <Button href="/kontakt.html" text="Lass uns reden" />
         </div>
         <DrawerMenu currentPath={currentPath} client:only="react" />
       </div>
@@ -40,6 +40,14 @@ const currentPath = Astro.url.pathname;
     top: 0;
     z-index: 1000;
     background: $color-white;
+
+    transition-timing-function: box-shadow 0s $transition-timing-function;
+
+    &.is-scrolled {
+      box-shadow: 0px 7px 18px rgba(135, 21, 21, 0.05);
+
+      transition-duration: $transition-duration;
+    }
   }
 
   .logo {
@@ -78,3 +86,14 @@ const currentPath = Astro.url.pathname;
     }
   }
 </style>
+
+<script is:inline>
+  const header = document.getElementById("site-header");
+
+  function onScroll() {
+    header.classList.toggle("is-scrolled", window.scrollY > 0);
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>
